@@ -13,5 +13,5 @@ This repo exists so you can learn how a real GitHub contribution works:
 
 ## Goal
 
-The goal of this repo is to give you a safe place to expriment with pull requests
+The goal of this repo is to give you a safe place to experiment with pull requests
 before doing it on a real project.
