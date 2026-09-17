@@ -1,0 +1,357 @@
+<title>Salt &amp; Oliv</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Karla:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --sand:#f4f1e8; --sand-2:#ece7da; --shell:#fffdf7;
+    --ink:#1b2a33; --ink-soft:#4d5f69;
+    --sea:#1e4e6b; --sea-deep:#143b50;
+    --glass:#8fc2c0; --olive:#6e7b52; --ochre:#d9a441;
+    --line:#d8d2c2;
+    --bg:var(--sand); --surface:var(--shell); --text:var(--ink); --muted:var(--ink-soft);
+    --accent:var(--sea); --edge:var(--line); --on-accent:#fffdf7;
+    --shadow:0 18px 40px -28px rgba(27,42,51,.55);
+    --step-0:1rem; --step-1:1.25rem; --step-2:1.6rem; --step-3:2.3rem; --step-4:clamp(2.6rem,7vw,4.6rem);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#101f28; --surface:#162b35; --text:#eee8da; --muted:#a9bcc2;
+      --accent:#8fc2c0; --edge:#28444f; --sand-2:#1b3038; --on-accent:#10222b;
+      --shadow:0 18px 40px -26px rgba(0,0,0,.75);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#101f28; --surface:#162b35; --text:#eee8da; --muted:#a9bcc2;
+    --accent:#8fc2c0; --edge:#28444f; --sand-2:#1b3038; --on-accent:#10222b;
+    --shadow:0 18px 40px -26px rgba(0,0,0,.75);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:Karla, "Helvetica Neue", Arial, sans-serif;
+    font-size:var(--step-0); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:Fraunces, Georgia, "Times New Roman", serif; font-weight:400; text-wrap:balance; margin:0; line-height:1.1}
+  p{margin:0}
+  .wrap{width:100%; max-width:1080px; margin-inline:auto; padding-inline:20px}
+  .eyebrow{font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); font-weight:700}
+
+  /* header */
+  header.bar{
+    position:sticky; top:env(safe-area-inset-top, 0px); z-index:20;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--edge);
+  }
+  .bar-in{display:flex; align-items:center; gap:18px; padding-block:14px}
+  .brand{font-family:Fraunces, Georgia, serif; font-size:1.15rem; letter-spacing:.02em; margin-right:auto; display:flex; align-items:center; gap:10px}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--ochre)}
+  nav a{color:var(--muted); text-decoration:none; font-size:.9rem; padding:6px 2px; border-bottom:1px solid transparent}
+  nav a:hover,nav a:focus-visible{color:var(--text); border-bottom-color:var(--accent)}
+  nav{display:flex; gap:18px}
+  .cart-btn{
+    font:inherit; font-size:.85rem; cursor:pointer; border:1px solid var(--edge); border-radius:999px;
+    background:var(--surface); color:var(--text); padding:8px 16px; display:flex; align-items:center; gap:8px;
+  }
+  .cart-btn:hover{border-color:var(--accent)}
+  .cart-count{background:var(--accent); color:var(--on-accent); border-radius:999px; min-width:20px; text-align:center; font-size:.75rem; font-weight:700; padding:0 6px}
+  .cart-count{color:var(--on-accent)}
+
+  /* hero */
+  .hero{position:relative; overflow:hidden; border-bottom:1px solid var(--edge)}
+  .sea{
+    position:absolute; inset:auto 0 0 0; height:46%;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--glass) 55%, transparent) 0%, color-mix(in srgb, var(--sea) 75%, transparent) 100%);
+    opacity:.3;
+    -webkit-mask-image:linear-gradient(180deg, transparent, #000 32%, #000 78%, transparent);
+    mask-image:linear-gradient(180deg, transparent, #000 32%, #000 78%, transparent);
+  }
+  .sea::after{
+    content:""; position:absolute; inset:0;
+    background:repeating-linear-gradient(180deg, transparent 0 22px, color-mix(in srgb, var(--shell) 22%, transparent) 22px 23px);
+    animation:drift 14s linear infinite;
+  }
+  @keyframes drift{from{transform:translateY(0)} to{transform:translateY(23px)}}
+  @media (prefers-reduced-motion:reduce){.sea::after{animation:none}}
+  .hero-in{position:relative; display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; padding-block:72px 84px}
+  .hero h1{font-size:var(--step-4); font-weight:300; letter-spacing:-.01em}
+  .hero h1 em{font-style:italic; color:var(--accent)}
+  .lede{font-size:var(--step-1); color:var(--muted); max-width:34ch; margin-top:20px}
+  .hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:30px}
+  .btn{
+    color:var(--on-accent);
+    font:inherit; font-weight:700; font-size:.92rem; cursor:pointer; text-decoration:none;
+    padding:13px 24px; border-radius:2px; border:1px solid var(--accent); background:var(--accent); color:var(--on-accent);
+  }
+  .btn.ghost{background:transparent; color:var(--text); border-color:var(--edge)}
+  .btn:hover{filter:brightness(1.06)}
+  .btn.ghost:hover{border-color:var(--accent)}
+
+  .hero-art{display:grid; place-items:center}
+  .hero-art svg{width:min(100%,380px); height:auto; filter:drop-shadow(0 22px 26px rgba(20,40,52,.25))}
+
+  /* sections */
+  section{padding-block:72px}
+  .sec-head{display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:34px}
+  .sec-head h2{font-size:var(--step-3); font-weight:300}
+  .sec-head p{color:var(--muted); font-size:.95rem; max-width:40ch}
+
+  .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+  .card{display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--edge); border-radius:3px; overflow:hidden}
+  .card figure{margin:0; padding:26px 26px 6px; background:linear-gradient(180deg, color-mix(in srgb, var(--glass) 16%, transparent), transparent); display:grid; place-items:center}
+  .card figure svg{width:100%; max-width:220px; height:auto}
+  .card-body{padding:18px 22px 22px; display:flex; flex-direction:column; gap:10px; flex:1}
+  .card h3{font-size:var(--step-2); font-weight:400}
+  .spec{color:var(--muted); font-size:.86rem; line-height:1.5}
+  .spec dt{display:inline; font-weight:700; color:var(--text)}
+  .spec dd{display:inline; margin:0}
+  .spec div+div{margin-top:3px}
+  .card-foot{display:flex; align-items:center; gap:12px; margin-top:auto; padding-top:6px}
+  .price{font-family:Fraunces, Georgia, serif; font-size:1.2rem; font-variant-numeric:tabular-nums; margin-right:auto}
+  .add{font:inherit; font-size:.85rem; font-weight:700; cursor:pointer; padding:10px 16px; border-radius:2px; border:1px solid var(--accent); background:transparent; color:var(--accent)}
+  .add:hover{background:var(--accent); color:var(--on-accent)}
+  .add.done{background:var(--olive); border-color:var(--olive); color:#fffdf7}
+
+  /* materials strip */
+  .strip{background:var(--sand-2); border-block:1px solid var(--edge)}
+  .strip .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:34px}
+  .strip h3{font-size:var(--step-1); font-weight:400; margin-bottom:8px}
+  .strip p{color:var(--muted); font-size:.92rem}
+  .strip .num{font-family:Fraunces, Georgia, serif; color:var(--ochre); font-size:1.5rem; display:block}
+
+  .note{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center}
+  .note blockquote{margin:0; font-family:Fraunces, Georgia, serif; font-size:var(--step-2); font-weight:300; line-height:1.4; border-left:2px solid var(--ochre); padding-left:20px}
+  .note cite{display:block; font-family:Karla, sans-serif; font-style:normal; font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-top:14px}
+  .facts{display:flex; flex-direction:column; gap:14px}
+  .fact{display:flex; gap:14px; align-items:baseline; border-bottom:1px solid var(--edge); padding-bottom:12px}
+  .fact b{font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); min-width:9ch}
+  .fact span{color:var(--text); font-size:.95rem}
+
+  footer{border-top:1px solid var(--edge); padding-block:40px; color:var(--muted); font-size:.85rem}
+  .foot-in{display:flex; gap:18px; flex-wrap:wrap; align-items:center}
+  .foot-in .brand{font-size:1rem; color:var(--text)}
+
+  /* cart drawer */
+  .cart{position:fixed; right:16px; bottom:calc(16px + env(safe-area-inset-bottom,0px)); z-index:30; width:min(340px, calc(100vw - 32px));
+        background:var(--surface); border:1px solid var(--edge); border-radius:4px; box-shadow:var(--shadow); padding:18px}
+  .cart h3{font-size:var(--step-1); font-weight:400; margin-bottom:10px}
+  .cart ul{list-style:none; margin:0 0 12px; padding:0; display:flex; flex-direction:column; gap:8px; max-height:40vh; overflow-y:auto}
+  .cart li{display:flex; gap:10px; font-size:.9rem; border-bottom:1px dotted var(--edge); padding-bottom:6px}
+  .cart li span:last-child{margin-left:auto; font-variant-numeric:tabular-nums}
+  .cart .total{display:flex; font-weight:700; border-top:1px solid var(--edge); padding-top:10px; font-variant-numeric:tabular-nums}
+  .cart .total span:last-child{margin-left:auto}
+  .cart .empty{color:var(--muted); font-size:.9rem}
+  .cart-close{position:absolute; top:10px; right:10px; background:none; border:0; color:var(--muted); font:inherit; cursor:pointer; font-size:1.1rem; line-height:1}
+  .cart .btn{width:100%; text-align:center; margin-top:12px}
+
+  :focus-visible{outline:2px solid var(--ochre); outline-offset:2px}
+
+  @media (max-width:860px){
+    .hero-in{grid-template-columns:1fr; padding-block:48px 60px}
+    .hero-art{order:-1}
+    .grid,.strip .grid3,.note{grid-template-columns:1fr; gap:26px}
+    .note{display:grid}
+    nav{display:none}
+    section{padding-block:52px}
+  }
+</style>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <div class="brand"><span class="dot"></span>Salt &amp; Oliv</div>
+    <nav>
+      <a href="#kepsar">Kepsar</a>
+      <a href="#armband">Armband</a>
+      <a href="#hantverk">Hantverket</a>
+    </nav>
+    <button class="cart-btn" id="cartToggle" aria-expanded="false">Korg <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="sea" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div>
+      <p class="eyebrow">Kepsar &amp; armband från kusten</p>
+      <h1>Skugga för ögonen,<br><em>salt</em> i luften.</h1>
+      <p class="lede">Vi syr kepsar i tvättad bomull och knyter armband i vaxad lintråd. Små serier, långsam takt, färger hämtade från en eftermiddag i skuggan av ett olivträd.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#kepsar">Se kepsarna</a>
+        <a class="btn ghost" href="#armband">Se armbanden</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 320 240" role="img" aria-label="Keps i tvättad bomull, sedd från sidan">
+        <ellipse cx="170" cy="214" rx="120" ry="12" fill="#1e4e6b" opacity="0.12"/>
+        <path d="M78,150 C82,74 136,36 190,48 C238,58 254,110 244,150 Z" fill="#1e4e6b"/>
+        <path d="M150,45 C166,80 176,116 176,150 L160,150 C160,116 152,80 142,50 Z" fill="#ffffff" opacity="0.14"/>
+        <path d="M74,146 C122,170 202,166 248,142 L252,162 C212,190 126,194 70,166 Z" fill="#163e56"/>
+        <path d="M78,152 C34,144 8,158 2,180 C26,204 78,206 118,186 Z" fill="#12354a"/>
+        <circle cx="163" cy="46" r="7" fill="#d9a441"/>
+        <path d="M196,96 q14,10 0,20" fill="none" stroke="#8fc2c0" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<section id="kepsar" class="wrap">
+  <div class="sec-head">
+    <h2>Kepsar</h2>
+    <p>Sex paneler, förtvättad twill som sitter mjukt från dag ett. Justerbar spänne i mässing, 54–61 cm.</p>
+  </div>
+  <div class="grid" id="capGrid"></div>
+</section>
+
+<div class="strip" id="hantverk">
+  <section class="wrap">
+    <div class="sec-head"><h2>Hantverket</h2><p>Tre saker vi inte tummar på.</p></div>
+    <div class="grid3">
+      <div>
+        <span class="num">12</span>
+        <h3>timmar i tvätten</h3>
+        <p>Twillen stentvättas tills den tappar sin stelhet. Därför är kepsen redan inkörd när du sätter på dig den första gången.</p>
+      </div>
+      <div>
+        <span class="num">1,5 mm</span>
+        <h3>vaxad lintråd</h3>
+        <p>Armbanden knyts för hand med löpknut, så samma band sitter lika bra på en handled som på en annan. Tål bad.</p>
+      </div>
+      <div>
+        <span class="num">40</span>
+        <h3>plagg per färg</h3>
+        <p>Vi färgar i små bad och gör om det vi tycker om. Blir en färg slut kommer den tillbaka nästa säsong — eller inte alls.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section id="armband" class="wrap">
+  <div class="sec-head">
+    <h2>Armband</h2>
+    <p>Knutna för hand i Sverige av lin, olivträ och sjöglas. Justerbara 15–21 cm.</p>
+  </div>
+  <div class="grid" id="braceletGrid"></div>
+</section>
+
+<div class="strip">
+  <section class="wrap note">
+    <blockquote>
+      “Det ska kännas som klockan tre på eftermiddagen, när vinden vänder och ingen har någonstans att vara.”
+      <cite>Vår formgivare, om färgkartan</cite>
+    </blockquote>
+    <div class="facts">
+      <div class="fact"><b>Frakt</b><span>Fri frakt över 500 kr. Skickas inom 1–2 dagar, brevlådevänligt.</span></div>
+      <div class="fact"><b>Retur</b><span>60 dagars öppet köp. Ingen returavgift, inga frågor.</span></div>
+      <div class="fact"><b>Vård</b><span>Kepsen: handtvätt, 30°, torka på en skål. Armbandet: tål salt och sol.</span></div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="brand"><span class="dot"></span>Salt &amp; Oliv</div>
+    <span>Verkstad i Simrishamn · hej@saltocholiv.se</span>
+    <span style="margin-left:auto">© 2026 Salt &amp; Oliv</span>
+  </div>
+</footer>
+
+<div class="cart" id="cartPanel" hidden>
+  <button class="cart-close" id="cartClose" aria-label="Stäng korgen">×</button>
+  <h3>Din korg</h3>
+  <p class="empty" id="cartEmpty">Korgen är tom. Lugnt, den väntar.</p>
+  <ul id="cartList"></ul>
+  <div class="total" id="cartTotal" hidden><span>Summa</span><span id="totalVal">0 kr</span></div>
+  <button class="btn" id="checkout" hidden>Till kassan</button>
+</div>
+
+<script>
+(function(){
+  var caps = [
+    {id:'mistral', name:'Mistral', price:549, spec:[['Färg','tvättad aegeanblå'],['Material','100 % bomullstwill, 280 g'],['Detalj','broderad horisontlinje i sjöglas']], crown:'#1e4e6b', band:'#163e56', brim:'#12354a', button:'#d9a441', stitch:'#8fc2c0'},
+    {id:'oliv', name:'Oliv', price:599, spec:[['Färg','olivlund'],['Material','lin/bomull 55/45, oblekt foder'],['Detalj','svettband i ofärgat lin']], crown:'#6e7b52', band:'#5c6845', brim:'#4f5a3b', button:'#e6e0cd', stitch:'#e6e0cd'},
+    {id:'salina', name:'Salina', price:529, spec:[['Färg','saltvit'],['Material','kraftig canvas, solblekt'],['Detalj','okra-passpoal i brättet']], crown:'#e8e2d2', band:'#d9d2bd', brim:'#cec6ae', button:'#d9a441', stitch:'#1e4e6b'}
+  ];
+  var bracelets = [
+    {id:'knut', name:'Knut', price:249, spec:[['Material','vaxad lintråd, olivträ'],['Pärlor','5 st, 8 mm'],['Storlek','justerbar 15–21 cm']], cord:'#6e7b52', bead:'#8a6a43', accent:'#d9a441'},
+    {id:'sjoglas', name:'Sjöglas', price:329, spec:[['Material','lintråd, slipat glas'],['Pärlor','7 st, trumlat sjöglas'],['Storlek','justerbar 15–21 cm']], cord:'#1e4e6b', bead:'#8fc2c0', accent:'#e8e2d2'},
+    {id:'ankartag', name:'Ankartåg', price:289, spec:[['Material','flätat segelgarn'],['Lås','mässingshake, handpolerad'],['Storlek','justerbar 15–21 cm']], cord:'#cec6ae', bead:'#d9a441', accent:'#1e4e6b'}
+  ];
+
+  function capSVG(p){
+    return '<svg viewBox="0 0 260 200" role="img" aria-label="Keps '+p.name+'">'+
+      '<ellipse cx="140" cy="182" rx="98" ry="10" fill="#1e4e6b" opacity="0.10"/>'+
+      '<path d="M64,128 C68,62 114,30 160,40 C200,49 214,92 206,128 Z" fill="'+p.crown+'"/>'+
+      '<path d="M126,38 C140,68 148,98 148,128 L134,128 C134,98 128,68 120,42 Z" fill="#ffffff" opacity="0.13"/>'+
+      '<path d="M61,125 C102,146 170,142 209,122 L212,139 C178,163 106,166 58,142 Z" fill="'+p.band+'"/>'+
+      '<path d="M64,130 C27,123 6,135 1,154 C21,174 64,176 98,159 Z" fill="'+p.brim+'"/>'+
+      '<circle cx="136" cy="38" r="6" fill="'+p.button+'"/>'+
+      '<path d="M166,80 q12,9 0,18" fill="none" stroke="'+p.stitch+'" stroke-width="3" stroke-linecap="round"/>'+
+    '</svg>';
+  }
+  function braceletSVG(p){
+    var cx=130, cy=100, r=64, beads='', n=9;
+    for(var i=0;i<n;i++){
+      var a=(-Math.PI/2)+(i-(n-1)/2)*0.46;
+      var x=cx+Math.cos(a)*r, y=cy+Math.sin(a)*r;
+      var fill=(i%4===2)?p.accent:p.bead;
+      beads+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(i%4===2?9:11)+'" fill="'+fill+'"/>';
+    }
+    return '<svg viewBox="0 0 260 200" role="img" aria-label="Armband '+p.name+'">'+
+      '<ellipse cx="130" cy="180" rx="76" ry="9" fill="#1e4e6b" opacity="0.10"/>'+
+      '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="'+p.cord+'" stroke-width="7" stroke-dasharray="9 6" stroke-linecap="round"/>'+
+      beads+
+      '<path d="M112,164 q18,16 36,0" fill="none" stroke="'+p.cord+'" stroke-width="6" stroke-linecap="round"/>'+
+      '<rect x="120" y="156" width="20" height="14" rx="4" fill="'+p.accent+'"/>'+
+    '</svg>';
+  }
+  function card(p, art){
+    var specs = p.spec.map(function(s){return '<div><dt>'+s[0]+':</dt> <dd>'+s[1]+'</dd></div>';}).join('');
+    return '<article class="card">'+
+      '<figure>'+art(p)+'</figure>'+
+      '<div class="card-body"><h3>'+p.name+'</h3><dl class="spec">'+specs+'</dl>'+
+      '<div class="card-foot"><span class="price">'+p.price+' kr</span>'+
+      '<button class="add" data-id="'+p.id+'" data-name="'+p.name+'" data-price="'+p.price+'">Lägg i korg</button></div></div></article>';
+  }
+  document.getElementById('capGrid').innerHTML = caps.map(function(p){return card(p, capSVG);}).join('');
+  document.getElementById('braceletGrid').innerHTML = bracelets.map(function(p){return card(p, braceletSVG);}).join('');
+
+  var cart = [];
+  var panel=document.getElementById('cartPanel'), list=document.getElementById('cartList'),
+      empty=document.getElementById('cartEmpty'), total=document.getElementById('cartTotal'),
+      totalVal=document.getElementById('totalVal'), count=document.getElementById('cartCount'),
+      checkout=document.getElementById('checkout'), toggle=document.getElementById('cartToggle');
+
+  function render(){
+    count.textContent = cart.length;
+    var sum = cart.reduce(function(a,i){return a+i.price;},0);
+    empty.hidden = cart.length>0;
+    total.hidden = cart.length===0;
+    checkout.hidden = cart.length===0;
+    totalVal.textContent = sum + ' kr';
+    list.innerHTML = cart.map(function(i,ix){return '<li><span>'+i.name+'</span><span>'+i.price+' kr</span></li>';}).join('');
+    checkout.textContent = 'Till kassan · ' + sum + ' kr' + (sum>=500 ? ' (fri frakt)' : '');
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('.add');
+    if(!b) return;
+    cart.push({name:b.dataset.name, price:parseInt(b.dataset.price,10)});
+    b.textContent='Tillagd ✓'; b.classList.add('done');
+    setTimeout(function(){ b.textContent='Lägg i korg'; b.classList.remove('done'); }, 1400);
+    panel.hidden=false; toggle.setAttribute('aria-expanded','true');
+    render();
+  });
+  toggle.addEventListener('click', function(){
+    panel.hidden = !panel.hidden;
+    toggle.setAttribute('aria-expanded', String(!panel.hidden));
+  });
+  document.getElementById('cartClose').addEventListener('click', function(){
+    panel.hidden = true; toggle.setAttribute('aria-expanded','false');
+  });
+  checkout.addEventListener('click', function(){
+    checkout.textContent = 'Tack — vi hör av oss ☀';
+  });
+  render();
+})();
+</script>
