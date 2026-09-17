@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-labelledby="title desc">
+  <title id="title">Stallion Caps</title>
+  <desc id="desc">Badge logo: a horse in profile wearing a cap and smoking a cigarette.</desc>
+
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b2b3d"/>
+      <stop offset="1" stop-color="#0f1926"/>
+    </linearGradient>
+    <linearGradient id="coat" x1="0.2" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#f7ecd9"/>
+      <stop offset="1" stop-color="#d9c1a0"/>
+    </linearGradient>
+    <linearGradient id="capg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f07a46"/>
+      <stop offset="1" stop-color="#cc4622"/>
+    </linearGradient>
+    <path id="arcTop" d="M 48,200 A 152,152 0 0 1 352,200"/>
+    <clipPath id="badge"><circle cx="200" cy="200" r="185"/></clipPath>
+  </defs>
+
+  <!-- badge -->
+  <circle cx="200" cy="200" r="196" fill="url(#sky)"/>
+  <circle cx="200" cy="200" r="185" fill="none" stroke="#e8b04b" stroke-width="5"/>
+  <circle cx="200" cy="200" r="174" fill="none" stroke="#e8b04b" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- ring text -->
+  <g fill="#e8b04b" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">
+    <text font-size="27" letter-spacing="7">
+      <textPath href="#arcTop" startOffset="50%">STALLION CAPS</textPath>
+    </text>
+  </g>
+  <g fill="#e8b04b" opacity="0.8">
+    <circle cx="62" cy="250" r="4"/>
+    <circle cx="338" cy="250" r="4"/>
+  </g>
+
+  <g clip-path="url(#badge)"><g transform="translate(200,190) scale(0.84) translate(-200,-196)">
+    <!-- smoke -->
+    <g fill="none" stroke="#9db2c6" stroke-width="5.5" stroke-linecap="round" opacity="0.5">
+      <path d="M58,262 C44,244 66,232 52,214 C42,201 56,192 52,178"/>
+      <path d="M80,268 C70,254 86,246 78,232" opacity="0.7"/>
+    </g>
+
+    <!-- ears (behind cap) -->
+    <path d="M204,130 C200,102 204,78 214,62 C228,80 234,106 232,134 Z" fill="#c9ad8a"/>
+    <path d="M238,132 C242,108 252,86 266,76 C272,98 268,122 258,144 Z" fill="#c9ad8a"/>
+
+    <!-- head -->
+    <path d="M216,116
+             C170,150 128,186 96,214
+             C90,224 90,236 94,244
+             C98,252 106,258 114,258
+             C150,278 172,290 198,298
+             C222,304 238,300 250,292
+             C238,330 200,400 168,560
+             L392,560
+             C318,340 308,288 300,244
+             C294,208 286,172 274,148
+             C262,126 242,114 216,116 Z"
+          fill="url(#coat)"/>
+
+    <!-- mane along the crest -->
+    <path d="M262,116 C284,138 294,178 300,216 C308,260 320,330 352,560
+             L318,560 C300,380 292,278 282,222 C276,182 270,146 262,116 Z"
+          fill="#6b4a33" opacity="0.9"/>
+
+    <!-- cheek shading -->
+    <path d="M236,206 C254,232 258,266 250,292 C238,300 222,304 198,298 C224,272 236,240 236,206 Z"
+          fill="#c9ad8a" opacity="0.45"/>
+
+    <!-- eye -->
+    <ellipse cx="206" cy="198" rx="11" ry="8.5" transform="rotate(-22 206 198)" fill="#22303f"/>
+    <circle cx="203" cy="195" r="2.8" fill="#f7ecd9"/>
+
+    <!-- nostril + mouth -->
+    <ellipse cx="110" cy="230" rx="7" ry="5.5" transform="rotate(35 110 230)" fill="#22303f" opacity="0.8"/>
+    <path d="M100,248 C114,256 130,258 144,256" fill="none" stroke="#22303f" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+
+    <!-- cigarette -->
+    <path d="M124,250 L82,270 L75,256 L117,236 Z" fill="#f8f4ec"/>
+    <path d="M104,242 L111,256" stroke="#d8cfbe" stroke-width="3"/>
+    <path d="M82,270 L67,277 L60,263 L75,256 Z" fill="#e8b04b"/>
+    <circle cx="63" cy="270" r="4.5" fill="#ff6b2c"/>
+
+    <!-- cap -->
+    <path d="M176,158 C182,100 222,72 260,82 C292,92 300,130 288,158 Z" fill="url(#capg)"/>
+    <path d="M220,80 C232,108 238,134 238,158 L226,158 C226,134 222,106 214,84 Z" fill="#ffffff" opacity="0.12"/>
+    <path d="M172,154 C208,174 264,170 290,152 L294,170 C264,194 200,196 168,172 Z" fill="#c9431f"/>
+    <path d="M176,160 C138,152 108,162 94,180 C112,200 148,202 182,188 Z" fill="#b83b1a"/>
+    <circle cx="236" cy="82" r="6" fill="#e8b04b"/>
+  </g></g>
+
+  <!-- banner -->
+  <g>
+    <path d="M56,292 L344,292 L322,336 L78,336 Z" fill="#cc4622"/>
+    <path d="M56,292 L344,292 L342,300 L58,300 Z" fill="#f07a46" opacity="0.8"/>
+    <path d="M56,292 L344,292 L322,336 L78,336 Z" fill="none" stroke="#e8b04b" stroke-width="3"/>
+    <text x="200" y="323" text-anchor="middle" fill="#f7ecd9"
+          font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-weight="700" font-size="18" letter-spacing="3">SMOKE &amp; SNAPBACKS</text>
+  </g>
+</svg>
